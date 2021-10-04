@@ -16,22 +16,22 @@ while(ejecucion === true){
     let num1, num2, operadores = "";
     let CheckNumero = false;
     while (CheckNumero === false) {
-        num1 = "", num2 = "", operadores = "";
+        num1 = "", num2 = "", operadores = "", num1Asignado = false;
         numeros = prompt("Introduce los números de la operación");
+        numeros = numeros.trim();
         let ArrayNumeros = numeros.split(" ");
 
         for (let i = 0; i < ArrayNumeros.length; i++) {
 
-            if(Number.isInteger(parseInt(ArrayNumeros[i])) === true){
-                operadores = operadores+ArrayNumeros[i]+"-";
+            let conversionInt = Number(ArrayNumeros[i]);
+            if(Number.isInteger(conversionInt) & num1Asignado === false){
+                num1 = conversionInt;
+                num1Asignado = true;
+            }else{
+                num2 = conversionInt;
             }
             
         }
-        cadenanumeros = operadores.split("-");
-
-        num1 = parseInt(cadenanumeros[0]);
-        num2 = parseInt(cadenanumeros[1]);
-        
         if(Number.isInteger(num1) === true & Number.isInteger(num2) === true){
             CheckNumero = true;
         }else{
