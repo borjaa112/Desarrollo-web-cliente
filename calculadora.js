@@ -22,7 +22,7 @@ while(ejecucion === true) {
         while(CheckOperador === false) {
             operacion = prompt("¿Que operación vas a realizar? (+, -, * ó /)");
             operacion = operacion.replace(/\s+/g, "");
-            if(operacion === "+" | operacion === "-" | operacion === "*" | operacion === "/") {
+            if(operacion === "+" || operacion === "-" || operacion === "*" || operacion === "/") {
                 CheckOperador = true;
             }else {
                 alert("Operador desconocido.");
