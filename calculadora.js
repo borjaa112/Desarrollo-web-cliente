@@ -45,27 +45,27 @@ while(ejecucion === true) {
             for (let i = 0; i < ArrayNumeros.length; i++) {
                 let conversionInt = ArrayNumeros[i];
 
-                if((Number.isInteger(Number(conversionInt)) === true) & num1Asignado === false) {
+                if((Number.isInteger(Number(conversionInt)) === true) && num1Asignado === false) {
                     num1 = Number(conversionInt);
                     num1Asignado = true;
                     continue;
                 }
-                if(conversionInt === "R" & num1Asignado === false) {
+                if(conversionInt === "R" && num1Asignado === false) {
                     num1 = calculadora.lastresult;
                     num1Asignado = true;
                     continue;
                 }
 
-                if((Number.isInteger(Number(conversionInt)) === true) & num1Asignado === true) {
+                if((Number.isInteger(Number(conversionInt)) === true) && num1Asignado === true) {
                     num2 = Number(conversionInt);
                 }
 
-                if(conversionInt === "R" & num1Asignado === true) {
+                if(conversionInt === "R" && num1Asignado === true) {
                     num2 = calculadora.lastresult;
                 }
 
             }
-            if (Number.isInteger(num1) === true & Number.isInteger(num2) === true) {
+            if (Number.isInteger(num1) === true && Number.isInteger(num2) === true) {
                 CheckNumero = true;
             }else {
                 alert("Numeros introducidos incorrectos.");
