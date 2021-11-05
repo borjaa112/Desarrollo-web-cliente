@@ -16,16 +16,16 @@ class Calculadora {
         return (num1 / num2);
     }
 };
-class ErrorOperacion extends Error {
+class OperacionError extends Error {
     constructor(message) {
         super(message);
-        this.name = "ErrorOperacion";
+        this.name = "OperacionError";
     }
 }
-class ErrorOperador extends Error {
+class OperadorError extends Error {
     constructor(message) {
         super(message);
-        this.name = "ErrorOperador";
+        this.name = "OperadorError";
     }
 }
 let calculadora = new Calculadora();
@@ -40,12 +40,12 @@ function PedirOperador() {
             if (operacion === "+" || operacion === "-" || operacion === "*" || operacion === "/") {
                 CheckOperador = true;
             } else {
-                throw new ErrorOperacion("Operador desconocido.");
+                throw new OperacionError("Operador desconocido.");
             }
         }
     }
     catch (error) {
-        if (error.name === "ErrorOperacion") {
+        if (error.name === "OperacionError") {
             alert(error.message);
             PedirOperador();
         }
@@ -86,7 +86,7 @@ let PedirOperandos = function () {
             if (Number.isInteger(num1) === true && Number.isInteger(num2) === true) {
                 CheckNumero = true;
             } else {
-                throw new ErrorOperador("Numeros introducidos incorrectos.");
+                throw new OperadorError("Numeros introducidos incorrectos.");
             }
         }
         console.log(num1 + "-" + num2);
@@ -94,7 +94,7 @@ let PedirOperandos = function () {
         return r;
 
     } catch (error) {
-        if (error.name === "ErrorOperador") {
+        if (error.name === "OperadorError") {
             alert(error.message);
             return PedirOperandos();
         }
