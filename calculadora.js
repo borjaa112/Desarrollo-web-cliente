@@ -1,3 +1,7 @@
+let operacion;
+let checkNumero = false;
+let ejecucion = true;
+
 class Calculadora {
     constructor() {
         this.lastresult = 0;
@@ -29,16 +33,15 @@ class OperadorError extends Error {
     }
 }
 let calculadora = new Calculadora();
-let operacion;
 
 function PedirOperador() {
     try {
-        let CheckOperador = false;
-        while (CheckOperador === false) {
+        let checkOperador = false;
+        while (checkOperador === false) {
             operacion = prompt("¿Que operación vas a realizar? (+, -, * ó /)");
             operacion = operacion.replace(/\s+/g, "");
             if (operacion === "+" || operacion === "-" || operacion === "*" || operacion === "/") {
-                CheckOperador = true;
+                checkOperador = true;
             } else {
                 throw new OperacionError("Operador desconocido.");
             }
@@ -51,17 +54,17 @@ function PedirOperador() {
         }
     }
 }
-let CheckNumero = false;
+
 let PedirOperandos = function () {
     try {
         let num1, num2;
-        while (CheckNumero === false) {
+        while (checkNumero === false) {
             let num1Asignado = false;
             numeros = prompt("Introduce los números de la operación");
             numeros = numeros.trim();
-            let ArrayNumeros = numeros.split(" ");
-            for (let i = 0; i < ArrayNumeros.length; i++) {
-                let conversionInt = ArrayNumeros[i];
+            let arrayNumeros = numeros.split(" ");
+            for (let i = 0; i < arrayNumeros.length; i++) {
+                let conversionInt = arrayNumeros[i];
 
                 if ((Number.isInteger(Number(conversionInt)) === true) && num1Asignado === false) {
                     num1 = Number(conversionInt);
@@ -84,14 +87,13 @@ let PedirOperandos = function () {
 
             }
             if (Number.isInteger(num1) === true && Number.isInteger(num2) === true) {
-                CheckNumero = true;
+                checkNumero = true;
             } else {
                 throw new OperadorError("Numeros introducidos incorrectos.");
             }
         }
         console.log(num1 + "-" + num2);
-        let r = num1 + "-" + num2;
-        return r;
+        return (num1 + "-" + num2);
 
     } catch (error) {
         if (error.name === "OperadorError") {
@@ -102,10 +104,10 @@ let PedirOperandos = function () {
     }
 };
 
-let ejecucion = true;
+
 while (ejecucion === true) {
     PedirOperador();
-    CheckNumero = false;
+    checkNumero = false;
 
     let StringNumeros = PedirOperandos();
     console.log(StringNumeros);
@@ -134,9 +136,9 @@ while (ejecucion === true) {
     }
     calculadora.lastresult = res;
 
-    RepOperacion = confirm("¿Quieres volver a hacer otra operación?");
+    repOperacion = confirm("¿Quieres volver a hacer otra operación?");
 
-    if (RepOperacion === false) {
+    if (repOperacion === false) {
         ejecucion = false;
     }
 }
